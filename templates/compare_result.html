@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Comparison Result</title>
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .image-box {
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Face Comparison Result</h1>
+    <div class="image-container">
+        <div class="image-box">
+            <h2>Source Image</h2>
+            <img src="{{ source_image }}" alt="Source Image" style="width: 200px; height:auto; box-sizing:content-box;">
+        </div>
+        <div class="image-box">
+            <h2>Target Image</h2>
+            <img src="{{ target_image }}" alt="Target Image" style="width: 200px; height:auto; box-sizing:content-box;">
+        </div>
+    </div>
+    <h2>Comparison Result:</h2>
+    <pre>{{ result }}</pre>
+</body>
+</html>

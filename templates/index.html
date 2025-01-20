@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="/static/style.css">
+
+	</style>
+</head>
+<body>
+	<h1>이영섭의 곳간</h1>
+
+	<form action="/add" method="GET">
+		<input type="text" name="num1" value="1번째 숫자를 입력하세요">
+		<input type="text" name="num2" value="2번째 숫자를 입력하세요">
+		<input type="submit" value="전송">
+	</form>
+
+	<hr style="height: 5px; background-color: black;">
+
+	<form action="/label" method="POST" enctype="multipart/form-data">
+		<input type="file" name="label">
+		<input type="submit" value="이미지 전송">
+	</form>
+
+	<hr style="height: 5px; background-color: black;">
+
+	<form action="/compare" method="POST" enctype="multipart/form-data">
+		<input type="file" name="sourceFile">
+		<input type="file" name="targetFile">
+		<input type="submit">
+	</form>
+</body>
+</html>
