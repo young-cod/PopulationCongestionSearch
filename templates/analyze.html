@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 분석 결과</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #1a1a1a;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 2rem;
+        }
+
+        .result-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .image-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .uploaded-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+
+        .result-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .result-section h2 {
+            color: #007bff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .result-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .confidence-score {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 2rem auto;
+            padding: 0.8rem 1.5rem;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #0056b3;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin: 0.2rem;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .result-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>이미지 분석 결과</h1>
+    <div class="result-container">
+        <div class="result-card">
+            <div class="image-section">
+                <h2>분석된 이미지</h2>
+                <img src="{{ image_url }}" alt="Analyzed Image" class="uploaded-image">
+            </div>
+
+            <div class="result-section">
+                <h2>분석 결과</h2>
+                {% for item in result %}
+                <div class="result-item">
+                    <p><strong>{{ item.name }}</strong> - <span class="confidence-score">{{ item.confidence }}%</span></p>
+                    {% if item.tags %}
+                    <div class="tags">
+                        {% for tag in item.tags %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <a href="/" class="back-button">처음으로 돌아가기</a>
+        </div>
+    </div>
+</body>
+</html>

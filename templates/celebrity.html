@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>닮은 유명인 찾기 결과</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #1a1a1a;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 2rem;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .result-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .result-info p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .confidence {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .image-box {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .image-box h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .description {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            line-height: 1.6;
+        }
+
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 2rem auto;
+            padding: 0.8rem 1.5rem;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>닮은 유명인 찾기 결과</h1>
+    <div class="result-card">
+        <div class="result-info">
+            <p><strong>닮은 사람:</strong> {{ name }}</p>
+            <p><strong>닮은 정도:</strong> <span class="confidence">{{ MatchConfidence }}%</span></p>
+            <p><strong>자세히 보기: </strong><a href="https://{{celebritesUrl}}" target="_blank">{{celebritesUrl}}</a></p>
+        </div>
+
+        <div class="image-container">
+            <div class="image-box">
+                <h2>업로드한 이미지</h2>
+                <img src="{{target_image}}" alt="업로드한 이미지">
+            </div>
+            <div class="image-box">
+                <h2>닮은 인물</h2>
+                <img src="{{img_url}}" alt="인물 이미지">
+            </div>
+        </div>
+
+        <div class="description">
+            <h3>설명</h3>
+            <p>{{text}}</p>
+        </div>
+
+        <a href="/" class="back-button">다시 시도하기</a>
+    </div>
+</body>
+</html>
